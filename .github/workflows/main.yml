@@ -26,6 +26,7 @@ jobs:
           ssh_key: ${{ secrets.DeploySshKey }}
         run: |
           echo "$SSH_KEY" > /tmp/ssh_key
+          chmod 400 /tmp/ssh_key
           ssh -o StrictHostKeyChecking=no -i /tmp/ssh_key sam@samdfonseca.com -- bash -c "git clone https://github.com/samdfonseca/samdfonseca.com /tmp/samdfonseca.com"
 # ssh -i /tmp/ssh_key sam@samdfonseca.com -- bash -c "sudo -u www-data rsync -av /tmp/samdfonseca.com/www/ /var/www/samdfonseca.com/"
 # ssh -i /tmp/ssh_key sam@samdfonseca.com -- bash -c "rm -rf /tmp/samdfonseca.com"
